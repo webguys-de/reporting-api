@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webguys_Reportingapi>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Webguys_Reportingapi>
+    </modules>
+</config>

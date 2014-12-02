@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Webguys_Reportingapi>
+            <version>0.0.1</version>
+        </Webguys_Reportingapi>
+    </modules>
+    <global>
+        <models>
+            <webguys_reportingapi>
+                <class>Webguys_Reportingapi_Model</class>
+            </webguys_reportingapi>
+        </models>
+        <helpers>
+            <webguys_reportingapi>
+                <class>Webguys_Reportingapi_Helper</class>
+            </webguys_reportingapi>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <api>
+                <args>
+                    <modules>
+                        <webguys_reportingapi before="Mage_Api">Webguys_Reportingapi</webguys_reportingapi>
+                    </modules>
+                </args>
+            </api>
+        </routers>
+    </frontend>
+</config>
