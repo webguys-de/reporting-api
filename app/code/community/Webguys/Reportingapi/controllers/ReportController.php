@@ -2,6 +2,13 @@
 
 class Webguys_Reportingapi_ReportController extends Mage_Api_Controller_Action
 {
+    public function preDispatch()
+    {
+        parent::preDispatch();
+        $this->getResponse()->setHeader('Content-type', 'application/json');
+        return $this;
+    }
+
     protected function checkPermission()
     {
         /** @var $http Mage_Core_Helper_Http */
@@ -24,7 +31,6 @@ class Webguys_Reportingapi_ReportController extends Mage_Api_Controller_Action
         $reportModel = Mage::getSingleton('webguys_reportingapi/report');
         $reportList = $reportModel->getReports();
 
-        $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($reportList));
     }
 
@@ -40,7 +46,6 @@ class Webguys_Reportingapi_ReportController extends Mage_Api_Controller_Action
             $this->getResponse()->setHttpResponseCode(404);
         }
 
-        $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($reportInfo));
     }
 
@@ -56,7 +61,6 @@ class Webguys_Reportingapi_ReportController extends Mage_Api_Controller_Action
             $this->getResponse()->setHttpResponseCode(404);
         }
 
-        $this->getResponse()->setHeader('Content-type', 'application/json');
         $this->getResponse()->setBody(Mage::helper('core')->jsonEncode($deleted));
     }
 }
