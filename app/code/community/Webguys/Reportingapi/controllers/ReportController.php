@@ -4,7 +4,16 @@ class Webguys_Reportingapi_ReportController extends Mage_Api_Controller_Action
 {
     protected function checkPermission()
     {
-        // TODO
+        /** @var $http Mage_Core_Helper_Http */
+        $http = Mage::helper('core/http');
+        list($user, $pass) = $http->authValidate();
+
+        $validUser = Mage::getStoreConfig('reportingapi/auth/username');
+        $validPass = Mage::getStoreConfig('reportingapi/auth/password');
+
+        if ($user !== $validUser || $pass !== $validPass) {
+            $http->authFailed();
+        }
     }
 
     public function listAction()
